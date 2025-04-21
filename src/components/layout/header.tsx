@@ -73,6 +73,7 @@ export const Header = () => {
             animate={isDesktopMenuOpen ? "open" : "closed"}
             variants={iconVariants}
             transition={{ duration: 0.3 }}
+            type="button" // Указываем type
           >
             {isDesktopMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </motion.button>
@@ -87,6 +88,7 @@ export const Header = () => {
             animate={isMobileMenuOpen ? "open" : "closed"}
             variants={iconVariants}
             transition={{ duration: 0.3 }}
+            type="button" // Указываем type
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </motion.button>
