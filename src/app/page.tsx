@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import { Header } from '@/components/layout/header';
-import { Footer } from '@/components/layout/footer';
 import { Hero } from '@/components/sections/Hero';
 import { Exhibitions } from '@/components/sections/Exhibitions';
 
