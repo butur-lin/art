@@ -30,7 +30,7 @@ export const Hero = () => {
       >
         <source src="/hero-intro.mp4" type="video/mp4" />
         {/* Фолбэк если видео не поддерживается */}
-        <div className="absolute inset-0 bg-[url('/hero-fallback.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center" />
       </video>
       
       {/* Затемнение фона */}
