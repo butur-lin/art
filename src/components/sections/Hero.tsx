@@ -28,7 +28,7 @@ export const Hero = () => {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <source src="/hero-intro.mp4" type="video/mp4" />
+        <source src="/hero-intro-art.mp4" type="video/mp4" />
         {/* Фолбэк если видео не поддерживается */}
         <div className="absolute inset-0 bg-[url('/hero.jpg')] bg-cover bg-center" />
       </video>

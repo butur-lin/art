@@ -18,7 +18,7 @@ export const Exhibitions = () => (
             title={`Exhibition Title ${item}`}
             href={`/exhibitions/exhibit-${item}`}
           >
-            Brief description of the exhibition and what visitors can expect to see.
+            Короткий опис виставки та те, що очікують відвідувачі.
           </Card>
         </AnimatedCard>
       ))}
