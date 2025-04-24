@@ -48,7 +48,7 @@ export const Hero = () => {
           Dive into the world of contemporary creativity. Explore exhibitions, events, and the soul of modern art.
         </p>
         <Link href="/exhibitions">
-          <Button className="text-lg px-6 py-3 rounded-2xl bg-green text-white-700 hover:bg-gray-100">
+          <Button className="text-lg px-6 py-3 rounded-2xl bg-green-800 text-white-700 hover:bg-gray-100">
   Explore Exhibitions
 </Button>
         </Link>
