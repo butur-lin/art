@@ -56,20 +56,20 @@ export const Header = () => {
         </Link>
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex space-x-6 text-gray-700">
-            <Link href="/exhibitions">Exhibitions</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/exhibitions">Виставки</Link>
+            <Link href="/about">Про музей</Link>
+            <Link href="/contact">Контакти</Link>
           </nav>
           <motion.button
             onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
             className="text-gray-700"
-            aria-label="Toggle desktop menu1"
+            aria-label="Toggle desktop menu"
             animate={isDesktopMenuOpen ? 'open' : 'closed'}
             variants={iconVariants}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4 }}
             {...({} as MotionButtonProps)}
           >
-            {isDesktopMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isDesktopMenuOpen ? <X size={30} /> : <Menu size={30} />}
           </motion.button>
         </div>
         <div className="md:hidden">
