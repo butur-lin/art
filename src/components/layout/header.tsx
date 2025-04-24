@@ -11,7 +11,6 @@ type MotionButtonProps = MotionProps & ButtonHTMLAttributes<HTMLButtonElement>;
 export const Header = () => {
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const slideDownVariants = {
     hidden: {
       opacity: 0,
@@ -40,25 +39,21 @@ export const Header = () => {
       },
     },
   };
-
   const itemVariants = {
     hidden: { opacity: 0, y: -10 },
     visible: { opacity: 1, y: 0 },
     exit: { opacity: 0 },
   };
-
   const iconVariants = {
     open: { rotate: 90 },
     closed: { rotate: 0 },
   };
-
   return (
     <header className="w-full py-6 px-6 md:px-20 bg-white shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-black">
           ArtVibe
         </Link>
-
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex space-x-6 text-gray-700">
             <Link href="/exhibitions">Exhibitions</Link>
@@ -77,7 +72,6 @@ export const Header = () => {
             {isDesktopMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </motion.button>
         </div>
-
         <div className="md:hidden">
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -92,7 +86,6 @@ export const Header = () => {
           </motion.button>
         </div>
       </div>
-
       <AnimatePresence>
         {isDesktopMenuOpen && (
           <motion.div
