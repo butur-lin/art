@@ -3,53 +3,53 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, MotionProps } from 'framer-motion';
+import { ButtonHTMLAttributes } from 'react';
+
+type MotionButtonProps = MotionProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Header = () => {
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Варианты анимации для меню
   const slideDownVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       height: 0,
       transition: {
         duration: 0.3,
-        ease: "easeInOut"
-      }
+        ease: 'easeInOut',
+      },
     },
-    visible: { 
+    visible: {
       opacity: 1,
-      height: "auto",
+      height: 'auto',
       transition: {
         duration: 0.3,
-        ease: "easeInOut",
+        ease: 'easeInOut',
         staggerChildren: 0.1,
-        when: "beforeChildren"
-      }
+        when: 'beforeChildren',
+      },
     },
     exit: {
       opacity: 0,
       height: 0,
       transition: {
         duration: 0.25,
-        ease: "easeInOut"
-      }
-    }
+        ease: 'easeInOut',
+      },
+    },
   };
 
-  // Варианты анимации для пунктов меню
   const itemVariants = {
     hidden: { opacity: 0, y: -10 },
     visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0 }
+    exit: { opacity: 0 },
   };
 
-  // Анимация иконки гамбургера
   const iconVariants = {
     open: { rotate: 90 },
-    closed: { rotate: 0 }
+    closed: { rotate: 0 },
   };
 
   return (
@@ -59,7 +59,6 @@ export const Header = () => {
           ArtVibe
         </Link>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex space-x-6 text-gray-700">
             <Link href="/exhibitions">Exhibitions</Link>
@@ -70,36 +69,30 @@ export const Header = () => {
             onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
             className="text-gray-700"
             aria-label="Toggle desktop menu"
-            animate={isDesktopMenuOpen ? "open" : "closed"}
+            animate={isDesktopMenuOpen ? 'open' : 'closed'}
             variants={iconVariants}
             transition={{ duration: 0.3 }}
-            type="button"
-            // Явно указываем тип для motion.button
-            whileTap={{ scale: 0.95 }} // Можно добавить эффект нажатия
+            {...({} as MotionButtonProps)}
           >
             {isDesktopMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </motion.button>
         </div>
 
-        {/* Mobile hamburger */}
         <div className="md:hidden">
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="text-gray-700"
             aria-label="Toggle mobile menu"
-            animate={isMobileMenuOpen ? "open" : "closed"}
+            animate={isMobileMenuOpen ? 'open' : 'closed'}
             variants={iconVariants}
             transition={{ duration: 0.3 }}
-            type="button"
-            // Явно указываем тип для motion.button
-            whileTap={{ scale: 0.95 }} // Можно добавить эффект нажатия
+            {...({} as MotionButtonProps)}
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </motion.button>
         </div>
       </div>
 
-      {/* Desktop hamburger menu */}
       <AnimatePresence>
         {isDesktopMenuOpen && (
           <motion.div
@@ -112,20 +105,25 @@ export const Header = () => {
           >
             <motion.nav className="flex flex-col space-y-2 py-4 text-gray-700">
               <motion.div variants={itemVariants}>
-                <Link href="/explore" className="block py-1">Explore</Link>
+                <Link href="/explore" className="block py-1">
+                  Explore
+                </Link>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <Link href="/events" className="block py-1">Events</Link>
+                <Link href="/events" className="block py-1">
+                  Events
+                </Link>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <Link href="/shop" className="block py-1">Shop</Link>
+                <Link href="/shop" className="block py-1">
+                  Shop
+                </Link>
               </motion.div>
             </motion.nav>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -138,13 +136,19 @@ export const Header = () => {
           >
             <motion.nav className="flex flex-col space-y-4 py-4 text-gray-700">
               <motion.div variants={itemVariants}>
-                <Link href="/explore" className="block py-1">Explore</Link>
+                <Link href="/explore" className="block py-1">
+                  Explore
+                </Link>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <Link href="/news" className="block py-1">News</Link>
+                <Link href="/news" className="block py-1">
+                  News
+                </Link>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <Link href="/visit" className="block py-1">Visit</Link>
+                <Link href="/visit" className="block py-1">
+                  Visit
+                </Link>
               </motion.div>
             </motion.nav>
           </motion.div>
