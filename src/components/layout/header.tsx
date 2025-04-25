@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, MotionProps } from 'framer-motion';
 import { ButtonHTMLAttributes } from 'react';
+import Image from 'next/image';
+import logo from '/logo.png';
 
 type MotionButtonProps = MotionProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -51,9 +53,15 @@ export const Header = () => {
   return (
     <header className="w-full py-6 px-6 md:px-20 bg-green-800 shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-white">
-          ПХМГМ ім. Миколи Ярошенка
-        </Link>
+        <Link href="/" className="flex items-center">
+  <Image
+    src={logo}
+    alt="Логотип"
+    width={50} // Укажите желаемую ширину
+    height={50} // Укажите желаемую высоту
+    priority // Добавьте атрибут priority для SEO
+  />
+</Link>
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex space-x-6 text-white">
             <Link href="/exhibitions">Виставки</Link>
