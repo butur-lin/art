@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import './globals.css';
 import { ReactNode } from 'react';
 import { Header } from '@/components/layout/header';
@@ -28,7 +27,7 @@ export const viewport = 'width=device-width, initial-scale=1, maximum-scale=1';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ua" className={`${inter.variable} ${sourceCodePro.variable}`} >
+    <html lang="uk" className={`${inter.variable} ${sourceCodePro.variable}`} >
       <body className="antialiased min-h-screen flex flex-col">
         <Header />
         <main className="flex-grow">
