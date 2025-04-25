@@ -2,6 +2,10 @@ import Head from 'next/head';
 import { Hero } from '@/components/sections/Hero';
 import { Exhibitions } from '@/components/sections/Exhibitions';
 
+export const metadata = {
+  title: 'ПХМГМ імені Миколи Ярошенка',
+  description: 'A contemporary art museum with modern exhibitions.',
+};
 export default function HomePage() {
   return (
     <>
