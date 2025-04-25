@@ -17,10 +17,7 @@ const sourceCodePro = Source_Code_Pro({
   display: 'swap' // Добавляем для лучшего отображения шрифтов
 });
 
-export const metadata = {
-  title: 'ArtVibe Museum',
-  description: 'A contemporary art museum with modern exhibitions.',
-};
+
 
 // Экспортируем viewport отдельно
 export const viewport = 'width=device-width, initial-scale=1, maximum-scale=1';
