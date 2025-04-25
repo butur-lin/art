@@ -49,20 +49,20 @@ export const Header = () => {
     closed: { rotate: 0 },
   };
   return (
-    <header className="w-full py-6 px-6 md:px-20 bg-white shadow-md sticky top-0 z-50">
+    <header className="w-full py-6 px-6 md:px-20 bg-green-800 shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center">
         <Link href="/" className="text-2xl font-bold text-black">
           ArtVibe
         </Link>
         <div className="hidden md:flex items-center space-x-6">
-          <nav className="flex space-x-6 text-gray-700">
+          <nav className="flex space-x-6 text-white">
             <Link href="/exhibitions">Виставки</Link>
             <Link href="/about">Про музей</Link>
             <Link href="/contact">Контакти</Link>
           </nav>
           <motion.button
             onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-            className="text-gray-700"
+            className="text-white-700"
             aria-label="Toggle desktop menu"
             animate={isDesktopMenuOpen ? 'open' : 'closed'}
             variants={iconVariants}
