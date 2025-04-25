@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       <Head>
-        <title>ArtVibe Museum — Contemporary Art Exhibitions</title>
+        <title>ПХМГМ імені Миколи Ярошенка</title>
         <meta name="description" content="ArtVibe Museum is a modern space for contemporary art exhibitions, events, and cultural inspiration." />
         <meta name="keywords" content="art museum, contemporary art, exhibitions, modern art, gallery, culture" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
