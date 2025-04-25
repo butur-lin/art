@@ -6,7 +6,6 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, MotionProps } from 'framer-motion';
 import { ButtonHTMLAttributes } from 'react';
 import Image from 'next/image';
-import logo from '/logo.webp';
 
 type MotionButtonProps = MotionProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
@@ -50,16 +49,17 @@ export const Header = () => {
     open: { rotate: 90 },
     closed: { rotate: 0 },
   };
+   const logoPath = '/logo.webp'; 
   return (
     <header className="w-full py-6 px-6 md:px-20 bg-green-800 shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center">
         <Link href="/" className="flex items-center">
   <Image
-    src={logo}
+    src={logoPath}
     alt="Логотип"
-    width={50} // Укажите желаемую ширину
-    height={50} // Укажите желаемую высоту
-    priority // Добавьте атрибут priority для SEO
+    width={50}
+    height={56}
+    priority 
   />
 </Link>
         <div className="hidden md:flex items-center space-x-6">
