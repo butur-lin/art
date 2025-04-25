@@ -51,8 +51,8 @@ export const Header = () => {
   return (
     <header className="w-full py-6 px-6 md:px-20 bg-green-800 shadow-md sticky top-0 z-50">
       <div className="flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-black">
-          ArtVibe
+        <Link href="/" className="text-2xl font-bold text-white">
+          ПХМГМ ім. Миколи Ярошенка
         </Link>
         <div className="hidden md:flex items-center space-x-6">
           <nav className="flex space-x-6 text-white">
@@ -62,7 +62,7 @@ export const Header = () => {
           </nav>
           <motion.button
             onClick={() => setIsDesktopMenuOpen(!isDesktopMenuOpen)}
-            className="text-white-700"
+            className="text-white"
             aria-label="Toggle desktop menu"
             animate={isDesktopMenuOpen ? 'open' : 'closed'}
             variants={iconVariants}
@@ -75,7 +75,7 @@ export const Header = () => {
         <div className="md:hidden">
           <motion.button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-gray-700"
+            className="text-white"
             aria-label="Toggle mobile menu"
             animate={isMobileMenuOpen ? 'open' : 'closed'}
             variants={iconVariants}
@@ -96,7 +96,7 @@ export const Header = () => {
             variants={slideDownVariants}
             className="hidden md:block overflow-hidden"
           >
-            <motion.nav className="flex flex-col space-y-2 py-4 text-gray-700">
+            <motion.nav className="flex flex-col space-y-2 py-4 text-white">
               <motion.div variants={itemVariants}>
                 <Link href="/explore" className="block py-1">
                   Explore
@@ -127,7 +127,7 @@ export const Header = () => {
             variants={slideDownVariants}
             className="md:hidden overflow-hidden"
           >
-            <motion.nav className="flex flex-col space-y-4 py-4 text-gray-700">
+            <motion.nav className="flex flex-col space-y-4 py-4 text-white">
               <motion.div variants={itemVariants}>
                 <Link href="/explore" className="block py-1">
                   Explore
