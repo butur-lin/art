@@ -43,9 +43,9 @@ export const Hero = () => {
         transition={{ duration: 1 }}
         className="z-10 text-center px-6"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-4">ArtVibe Museum</h1>
+        <h1 className="text-5xl md:text-7xl font-bold mb-4">ПХМГМ імені Миколи Ярошенка </h1>
         <p className="text-xl md:text-2xl mb-6 max-w-2xl mx-auto">
-          Dive into the world of contemporary creativity. Explore exhibitions, events, and the soul of modern art.
+         вул. Європейська, 5, м. Полтава, Україна, 36020 	📞 +380 532 560-731
         </p>
         <Link href="/exhibitions">
           <Button className="text-lg px-6 py-3 rounded-2xl bg-green-800 text-white-700 hover:bg-gray-100">
