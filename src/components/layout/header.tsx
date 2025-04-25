@@ -6,7 +6,7 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, MotionProps } from 'framer-motion';
 import { ButtonHTMLAttributes } from 'react';
 import Image from 'next/image';
-import logo from '/logo.png';
+import logo from '/logo.jpg';
 
 type MotionButtonProps = MotionProps & ButtonHTMLAttributes<HTMLButtonElement>;
 
