@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { Hero } from '@/components/sections/Hero';
 import { Exhibitions } from '@/components/sections/Exhibitions';
+import NewsBlock from '@/components/sections/NewsBlock';
 
 export const metadata = {
   title: 'ПХМГМ імені Миколи Ярошенка',
@@ -21,6 +22,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <Exhibitions />
+         <NewsBlock />
       </main>
      
     </>
