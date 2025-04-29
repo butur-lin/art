@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, Facebook, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -10,11 +10,31 @@ const navLinks = [
   { href: '/exhibitions', label: 'Афіша' },
   { href: '/services', label: 'Послуги' },
   { href: '/names', label: 'Імена' },
-  { href: '/events', label: 'Події' },
-  { href: '/abouts', label: 'Про музей', subLinks: [{ href: '/contact', label: 'Контакти' }, { href: '/public-information', label: 'Публічна інформація' }] },
-  { href: '/archive', label: 'Архів', subLinks: [{ href: '/archive-yaroshenko', label: 'Архів творів М. О. Ярошенка' }, { href: '/archive-tsiss', label: 'Архів творів Г. І. Цисса' }] },
+  {
+    href: '/abouts',
+    label: 'Про музей',
+    subLinks: [
+      { href: '/contact', label: 'Контакти' },
+      { href: '/public-information', label: 'Публічна інформація' },
+    ],
+  },
+  {
+    href: '/archive',
+    label: 'Архів',
+    subLinks: [
+      { href: '/archive-yaroshenko', label: 'Архів творів М. О. Ярошенка' },
+      { href: '/archive-tsiss', label: 'Архів творів Г. І. Цисса' },
+    ],
+  },
+  {
+    href: '/awards',
+    label: 'Премія',
+    subLinks: [
+      { href: '/prize-regulations', label: 'Положення про премію' },
+      { href: '/award-winners', label: 'Лауреати премії' },
+    ],
+  },
   { href: '/media', label: 'Медіа' },
-  { href: '/awards', label: 'Премія', subLinks: [{ href: '/prize-regulations', label: 'Положення про премію' }, { href: '/award-winners', label: 'Лауреати премії' }] },
 ];
 
 export const Header = () => {
@@ -49,6 +69,7 @@ export const Header = () => {
   const closeMenus = () => {
     setIsMobileMenuOpen(false);
     setIsDesktopMenuOpen(false);
+    setActiveMenu(null);
   };
 
   const toggleSubMenu = (label: string) => {
@@ -83,8 +104,9 @@ export const Header = () => {
       initial={{ y: 0 }}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.4, ease: 'easeInOut' }}
-      className={`w-full px-6 md:px-20 sticky top-0 z-50 shadow-md transition-all duration-300 ease-in-out
-        ${isScrolled ? 'bg-green-900/80 backdrop-blur-md py-2' : 'bg-green-800 py-6'}`}
+      className={`w-full px-6 md:px-20 sticky top-0 z-50 shadow-md transition-all duration-300 ease-in-out ${
+        isScrolled ? 'bg-green-900/80 backdrop-blur-md py-2' : 'bg-green-800 py-6'
+      }`}
     >
       <div className="flex justify-between items-center">
         {/* Logo */}
@@ -99,14 +121,7 @@ export const Header = () => {
             }}
             transition={{ duration: 1.2, ease: 'easeInOut' }}
           >
-            <Image
-              src="/logo.webp"
-              alt="Логотип"
-              width={50}
-              height={56}
-              priority
-              className="transition-all duration-300"
-            />
+            <Image src="/logo.webp" alt="Логотип" width={50} height={56} priority />
           </motion.div>
         </Link>
 
@@ -121,25 +136,24 @@ export const Header = () => {
             transition={{ duration: 0.4, ease: 'easeInOut' }}
             className="flex space-x-6 text-white"
           >
-            {navLinks.slice(0, 3).map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="hover:underline hover:scale-110 transition-all"
-              >
-                {link.label}
-              </Link>
-            ))}
-            {navLinks.slice(4).map(link => (
+            {navLinks.map(link => (
               <div key={link.href} className="relative">
-                <button
-                  onClick={() => toggleSubMenu(link.label)}
-                  className="hover:underline hover:scale-110 transition-all"
-                >
-                  {link.label}
-                </button>
+                {link.subLinks ? (
+                  <button
+                    onClick={() => toggleSubMenu(link.label)}
+                    className="hover:underline hover:scale-110 flex items-center gap-1 transition-all"
+                  >
+                    {link.label}
+                    <ChevronDown className="w-4 h-4" />
+                  </button>
+                ) : (
+                  <Link href={link.href} className="hover:underline hover:scale-110 transition-all">
+                    {link.label}
+                  </Link>
+                )}
+
                 {activeMenu === link.label && link.subLinks && (
-                  <div className="absolute left-0 mt-2 bg-green-800 text-white rounded-lg shadow-lg w-[200px] p-4">
+                  <div className="absolute left-0 mt-2 bg-green-800 text-white rounded-lg shadow-lg w-[200px] p-4 z-50">
                     {link.subLinks.map(subLink => (
                       <AnimatedLink key={subLink.href} href={subLink.href}>
                         {subLink.label}
@@ -174,7 +188,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Shared Dropdown */}
+      {/* Dropdown menu */}
       <AnimatePresence>
         {(isMobileMenuOpen || isDesktopMenuOpen) && (
           <motion.div
@@ -188,31 +202,44 @@ export const Header = () => {
             }`}
           >
             {navLinks.map(link => (
-  <div key={link.href} className="relative">
-    {link.subLinks ? (
-      <>
-        <button
-          onClick={() => toggleSubMenu(link.label)}
-          className="w-full text-left py-2 text-white hover:underline"
-        >
-          {link.label}
-        </button>
-        {activeMenu === link.label && (
-          <div className="mt-2 ml-4 bg-green-700 rounded-md p-2">
-            {link.subLinks.map(subLink => (
-              <AnimatedLink key={subLink.href} href={subLink.href}>
-                {subLink.label}
-              </AnimatedLink>
+              <div key={link.href} className="relative">
+                <AnimatedLink href={link.href}>
+                  {link.label}
+                  {link.subLinks && <ChevronDown className="inline w-4 h-4 ml-1" />}
+                </AnimatedLink>
+                {link.subLinks && (
+                  <div className="ml-4 mt-2 space-y-1">
+                    {link.subLinks.map(subLink => (
+                      <AnimatedLink key={subLink.href} href={subLink.href}>
+                        {subLink.label}
+                      </AnimatedLink>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
-          </div>
-        )}
-      </>
-    ) : (
-      <AnimatedLink href={link.href}>{link.label}</AnimatedLink>
-    )}
-  </div>
-))}
 
+            {/* Social Links */}
+            <div className="flex items-center gap-4 mt-6 border-t border-green-600 pt-4">
+              <motion.a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, color: '#a7f3d0' }}
+                className="text-white transition"
+              >
+                <Facebook size={20} />
+              </motion.a>
+              <motion.a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, color: '#a7f3d0' }}
+                className="text-white transition"
+              >
+                <Youtube size={20} />
+              </motion.a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
