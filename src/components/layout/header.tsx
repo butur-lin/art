@@ -200,6 +200,22 @@ export const Header = () => {
                 <Youtube size={20} />
               </a>
             </div>
+
+            {/* Phone & Address in Mobile Menu */}
+            <div className="mt-6 flex flex-col space-y-4">
+              <a href="tel:+1234567890" className="text-white hover:text-green-300 transition-all">
+                <Phone size={20} />
+                Телефон
+              </a>
+              <a
+                href="https://www.google.com/maps?q=your+museum+address"
+                target="_blank"
+                className="text-white hover:text-green-300 transition-all"
+              >
+                <MapPin size={20} />
+                Адреса
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
