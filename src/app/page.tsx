@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Head from 'next/head';
 import { Hero } from '@/components/sections/Hero';
