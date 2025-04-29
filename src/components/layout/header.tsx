@@ -123,7 +123,7 @@ export const Header = () => {
         <Link href="/" className="flex items-center">
           <motion.div
             initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-            animate={{ opacity: isScrolled ? 0.7 : 1, x: isScrolled ? -50 : 0, y: isScrolled ? -50 : 0, scale: isScrolled ? 0.7 : 1 }}
+            animate={{ opacity: isScrolled ? 0.7 : 1, x: isScrolled ? -50 : 0, y: isScrolled ? -57 : 0, scale: isScrolled ? 0.7 : 1 }}
             transition={{ duration: 1.2, ease: 'easeInOut' }}
           >
             <Image src="/logo.webp" alt="Логотип" width={50} height={56} priority className="transition-all duration-300" />
