@@ -186,7 +186,7 @@ export const Header = () => {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className={`flex flex-col bg-green-800 p-6 rounded-lg mt-4 z-40 ${isMobileMenuOpen ? 'md:hidden' : 'hidden md:flex fixed top-20 right-0 w-[300px] rounded-l-2xl shadow-lg'}`}
+            className={`flex flex-col bg-green-700 p-6 rounded-lg mt-4 z-40 ${isMobileMenuOpen ? 'md:hidden' : 'hidden md:flex fixed top-10 right-0 w-[350px] rounded-l-2xl shadow-lg'}`}
           >
             {navLinks.map(link => (
               <div key={link.href} className="relative">
