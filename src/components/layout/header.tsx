@@ -7,11 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '/exhibitions', label: 'Виставки' },
-  { href: '/about', label: 'Про музей' },
-  { href: '/contact', label: 'Контакти' },
+  { href: '/exhibitions', label: 'Афіша' },
+  { href: '/services', label: 'Послуги' },
+  { href: '/names', label: 'Імена' },
   { href: '/events', label: 'Події' },
-  { href: '/shop', label: 'Магазин' },
+  { href: '/abouts', label: 'Про музей', subLinks: [{ href: '/contact', label: 'Контакти' }, { href: '/public-information', label: 'Публічна інформація' }] },
+  { href: '/archive', label: 'Архів', subLinks: [{ href: '/archive-yaroshenko', label: 'Архів творів М. О. Ярошенка' }, { href: '/archive-tsiss', label: 'Архів творів Г. І. Цисса' }] },
+  { href: '/media', label: 'Медіа' },
+  { href: '/awards', label: 'Премія', subLinks: [{ href: '/prize-regulations', label: 'Положення про премію' }, { href: '/award-winners', label: 'Лауреати премії' }] },
 ];
 
 export const Header = () => {
@@ -20,6 +23,7 @@ export const Header = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktopMenuOpen, setIsDesktopMenuOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +49,10 @@ export const Header = () => {
   const closeMenus = () => {
     setIsMobileMenuOpen(false);
     setIsDesktopMenuOpen(false);
+  };
+
+  const toggleSubMenu = (label: string) => {
+    setActiveMenu(activeMenu === label ? null : label);
   };
 
   const menuVariants = {
@@ -122,6 +130,25 @@ export const Header = () => {
                 {link.label}
               </Link>
             ))}
+            {navLinks.slice(4).map(link => (
+              <div key={link.href} className="relative">
+                <button
+                  onClick={() => toggleSubMenu(link.label)}
+                  className="hover:underline hover:scale-110 transition-all"
+                >
+                  {link.label}
+                </button>
+                {activeMenu === link.label && link.subLinks && (
+                  <div className="absolute left-0 mt-2 bg-green-800 text-white rounded-lg shadow-lg w-[200px] p-4">
+                    {link.subLinks.map(subLink => (
+                      <AnimatedLink key={subLink.href} href={subLink.href}>
+                        {subLink.label}
+                      </AnimatedLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
           </motion.nav>
 
           <motion.button
@@ -161,9 +188,18 @@ export const Header = () => {
             }`}
           >
             {navLinks.map(link => (
-              <AnimatedLink key={link.href} href={link.href}>
-                {link.label}
-              </AnimatedLink>
+              <div key={link.href} className="relative">
+                <AnimatedLink href={link.href}>{link.label}</AnimatedLink>
+                {link.subLinks && activeMenu === link.label && (
+                  <div className="absolute left-0 mt-2 bg-green-800 text-white rounded-lg shadow-lg w-[200px] p-4">
+                    {link.subLinks.map(subLink => (
+                      <AnimatedLink key={subLink.href} href={subLink.href}>
+                        {subLink.label}
+                      </AnimatedLink>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
           </motion.div>
         )}
