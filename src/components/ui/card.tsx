@@ -1,6 +1,4 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from './button';
+import Image from 'next/image'; // Оставляем только Image!
 
 interface CardProps {
   image: string;
@@ -11,9 +9,11 @@ interface CardProps {
 
 export const Card = ({ image, title, href, children }: CardProps) => (
   <a href={href} className="group relative block rounded-xl overflow-hidden shadow-lg">
-    <img
+    <Image
       src={image}
       alt={title}
+      width={300} // Поставь реальные размеры для твоего дизайна
+      height={240}
       className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
     />
     {/* Темно-зелёное затемнение */}
@@ -30,4 +30,5 @@ export const Card = ({ image, title, href, children }: CardProps) => (
     </div>
   </a>
 );
+
 
