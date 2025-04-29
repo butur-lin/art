@@ -5,19 +5,29 @@ import { Button } from './button';
 interface CardProps {
   image: string;
   title: string;
-  children: React.ReactNode;
   href: string;
+  children: React.ReactNode; // description
 }
 
-export const Card: React.FC<CardProps> = ({ image, title, children, href }) => (
-  <div className="rounded-2xl overflow-hidden shadow-lg bg-white">
-    <Image src={image} alt={title} width={400} height={300} className="w-full h-60 object-cover" />
-    <div className="p-6">
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600 mb-4">{children}</p>
-      <Link href={href}>
-        <Button className="text-sm px-4 py-2 rounded-xl">Learn More</Button>
-      </Link>
+export const Card = ({ image, title, href, children }: CardProps) => (
+  <a href={href} className="group relative block rounded-xl overflow-hidden shadow-lg">
+    <img
+      src={image}
+      alt={title}
+      className="w-full h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+    />
+    {/* Темно-зелёное затемнение */}
+    <div className="absolute inset-0 bg-green-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+    {/* Описание при ховере */}
+    <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+      <p className="text-sm">{children}</p>
     </div>
-  </div>
+
+    {/* Заголовок — всегда виден */}
+    <div className="absolute top-4 left-4 text-white px-3 py-1 rounded shadow text-m font-semibold z-10">
+      {title}
+    </div>
+  </a>
 );
+
