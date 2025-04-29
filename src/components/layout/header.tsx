@@ -85,7 +85,7 @@ export const Header = () => {
       <Link
         href={href}
         onClick={closeMenus}
-        className="block py-2 text-white relative transition-all duration-300 hover:after:w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-300 after:transition-all after:duration-300"
+        className="block py-2 text-white relative transition-all duration-300 font-ermilov hover:after:w-full after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-green-300 after:transition-all after:duration-300"
       >
         {children}
       </Link>
@@ -101,7 +101,7 @@ export const Header = () => {
     >
       <div className="flex justify-between items-center">
         {/* Left links near Logo */}
-        <div className="hidden md:flex items-center gap-6 text-white">
+        <div className="hidden md:flex items-center font-ermilov gap-6 text-white">
           <motion.a
             href="tel:+380123456789"
             className="flex items-center gap-1 hover:text-green-300 transition"
@@ -131,8 +131,8 @@ export const Header = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-6">
-          <motion.nav initial={{ opacity: 1, x: 0 }} animate={{ opacity: isScrolled ? 0 : 1, x: isScrolled ? 100 : 0 }} transition={{ duration: 0.4, ease: 'easeInOut' }} className="flex space-x-6 text-white">
+        <div className="hidden md:flex items-center font-ermilov space-x-6">
+          <motion.nav initial={{ opacity: 1, x: 0 }} animate={{ opacity: isScrolled ? 0 : 1, x: isScrolled ? 100 : 0 }} transition={{ duration: 0.4, ease: 'easeInOut' }} className="flex space-x-6 font-ermilov text-white">
             {navLinks.map(link => (
               <div key={link.href} className="relative">
                 {link.subLinks ? (
@@ -186,7 +186,7 @@ export const Header = () => {
             animate="visible"
             exit="exit"
             variants={menuVariants}
-            className={`flex flex-col bg-green-700 p-6 rounded-lg mt-4 z-40 ${isMobileMenuOpen ? 'md:hidden' : 'hidden md:flex fixed top-10 right-0 w-[350px] rounded-l-2xl shadow-lg'}`}
+            className={`font-ermilov flex flex-col bg-green-700 p-6 rounded-lg mt-4 z-40 ${isMobileMenuOpen ? 'md:hidden' : 'hidden md:flex fixed top-10 right-0 w-[350px] rounded-l-2xl shadow-lg'}`}
           >
             {navLinks.map(link => (
               <div key={link.href} className="relative">
