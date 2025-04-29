@@ -7,13 +7,39 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const navLinks = [
-  { href: '/exhibitions', label: 'Афіша' },
-  { href: '/services', label: 'Послуги' },
-  { href: '/names', label: 'Імена' },
-  { href: '/events', label: 'Події' },
-  { href: '/abouts', label: 'Про музей', subLinks: [{ href: '/contact', label: 'Контакти' }, { href: '/public-information', label: 'Публічна інформація' }] },
-  { href: '/archive', label: 'Архів', subLinks: [{ href: '/archive-yaroshenko', label: 'Архів творів М. О. Ярошенка' }, { href: '/archive-tsiss', label: 'Архів творів Г. І. Цисса' }] },
-];
+   { href: '/exhibitions', label: 'Афіша' },
+   { href: '/services', label: 'Послуги' },
+   { href: '/names', label: 'Імена' },
+   { href: '/events', label: 'Події' },
+   { href: '/abouts', label: 'Про музей', subLinks: [{ href: '/contact', label: 'Контакти' }, { href: '/public-information', label: 'Публічна інформація' }] },
+   { href: '/archive', label: 'Архів', subLinks: [{ href: '/archive-yaroshenko', label: 'Архів творів М. О. Ярошенка' }, { href: '/archive-tsiss', label: 'Архів творів Г. І. Цисса' }] },
+   {
+     href: '/abouts',
+     label: 'Про музей',
+     subLinks: [
+       { href: '/contact', label: 'Контакти' },
+       { href: '/public-information', label: 'Публічна інформація' },
+     ],
+   },
+   {
+     href: '/archive',
+     label: 'Архів',
+     subLinks: [
+       { href: '/archive-yaroshenko', label: 'Архів творів М. О. Ярошенка' },
+       { href: '/archive-tsiss', label: 'Архів творів Г. І. Цисса' },
+     ],
+   },
+   {
+     href: '/awards',
+     label: 'Премія',
+     subLinks: [
+       { href: '/prize-regulations', label: 'Положення про премію' },
+       { href: '/award-winners', label: 'Лауреати премії' },
+     ],
+   },
+   { href: '/media', label: 'Медіа' },
+   { href: '/awards', label: 'Премія', subLinks: [{ href: '/prize-regulations', label: 'Положення про премію' }, { href: '/award-winners', label: 'Лауреати премії' }] },
+ ];
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
