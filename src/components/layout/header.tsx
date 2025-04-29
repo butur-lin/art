@@ -188,19 +188,31 @@ export const Header = () => {
             }`}
           >
             {navLinks.map(link => (
-              <div key={link.href} className="relative">
-                <AnimatedLink href={link.href}>{link.label}</AnimatedLink>
-                {link.subLinks && activeMenu === link.label && (
-                  <div className="absolute left-0 mt-2 bg-green-800 text-white rounded-lg shadow-lg w-[200px] p-4">
-                    {link.subLinks.map(subLink => (
-                      <AnimatedLink key={subLink.href} href={subLink.href}>
-                        {subLink.label}
-                      </AnimatedLink>
-                    ))}
-                  </div>
-                )}
-              </div>
+  <div key={link.href} className="relative">
+    {link.subLinks ? (
+      <>
+        <button
+          onClick={() => toggleSubMenu(link.label)}
+          className="w-full text-left py-2 text-white hover:underline"
+        >
+          {link.label}
+        </button>
+        {activeMenu === link.label && (
+          <div className="mt-2 ml-4 bg-green-700 rounded-md p-2">
+            {link.subLinks.map(subLink => (
+              <AnimatedLink key={subLink.href} href={subLink.href}>
+                {subLink.label}
+              </AnimatedLink>
             ))}
+          </div>
+        )}
+      </>
+    ) : (
+      <AnimatedLink href={link.href}>{link.label}</AnimatedLink>
+    )}
+  </div>
+))}
+
           </motion.div>
         )}
       </AnimatePresence>
