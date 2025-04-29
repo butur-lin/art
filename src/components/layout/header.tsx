@@ -48,12 +48,6 @@ export const Header = () => {
     setActiveMenu(activeMenu === label ? null : label);
   };
 
-  const menuVariants = {
-    hidden: { x: 300, opacity: 0 },
-    visible: { x: 0, opacity: 1 },
-    exit: { x: 300, opacity: 0 },
-  };
-
   const linkHoverAnimation = {
     whileHover: { scale: 1.05 },
     transition: { type: 'spring', stiffness: 300 },
@@ -76,9 +70,8 @@ export const Header = () => {
       initial={{ y: 0 }}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.4, ease: 'easeInOut' }}
-      className={`w-full px-6 md:px-20 sticky top-0 z-50 shadow-md transition-all duration-300 ease-in-out ${
-        isScrolled ? 'bg-green-900/80 backdrop-blur-md py-2' : 'bg-green-800 py-6'
-      }`}
+      className={`w-full px-6 md:px-20 sticky top-0 z-50 shadow-md transition-all duration-300 ease-in-out
+        ${isScrolled ? 'bg-green-900/80 backdrop-blur-md py-2' : 'bg-green-800 py-6'}`}
     >
       <div className="flex justify-between items-center">
         {/* Logo */}
@@ -104,6 +97,44 @@ export const Header = () => {
           </motion.div>
         </Link>
 
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center space-x-6">
+          <motion.nav
+            initial={{ opacity: 1, x: 0 }}
+            animate={{
+              opacity: isScrolled ? 0 : 1,
+              x: isScrolled ? 100 : 0,
+            }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            className="flex space-x-6 text-white"
+          >
+            {navLinks.map(link => (
+              <div key={link.href} className="relative">
+                {link.subLinks ? (
+                  <button
+                    onClick={() => toggleSubMenu(link.label)}
+                    className="text-white py-2 px-4 hover:underline"
+                  >
+                    {link.label}
+                    <ChevronDown className="inline w-4 h-4 ml-1" />
+                  </button>
+                ) : (
+                  <AnimatedLink href={link.href}>{link.label}</AnimatedLink>
+                )}
+                {activeMenu === link.label && link.subLinks && (
+                  <div className="absolute left-0 mt-2 bg-green-800 text-white rounded-lg shadow-lg w-[200px] p-4">
+                    {link.subLinks.map(subLink => (
+                      <AnimatedLink key={subLink.href} href={subLink.href}>
+                        {subLink.label}
+                      </AnimatedLink>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </motion.nav>
+        </div>
+
         {/* Mobile Button */}
         <div className="md:hidden">
           <motion.button
@@ -121,40 +152,40 @@ export const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            key="dropdown-menu"
+            key="mobile-menu"
             initial="hidden"
             animate="visible"
             exit="exit"
-            variants={menuVariants}
+            variants={{
+              hidden: { opacity: 0, x: 300 },
+              visible: { opacity: 1, x: 0 },
+              exit: { opacity: 0, x: 300 },
+            }}
             className="flex flex-col bg-green-800 p-6 rounded-lg mt-4 z-40"
           >
             {navLinks.map(link => (
               <div key={link.href} className="relative">
                 {link.subLinks ? (
-                  <>
-                    <button
-                      onClick={() => toggleSubMenu(link.label)}
-                      className="w-full text-left py-2 text-white hover:underline"
-                    >
-                      {link.label}
-                      <ChevronDown className="inline w-4 h-4 ml-1" />
-                    </button>
-                    {activeMenu === link.label && (
-                      <div className="mt-2 ml-4 bg-green-700 rounded-md p-2">
-                        {link.subLinks.map(subLink => (
-                          <AnimatedLink key={subLink.href} href={subLink.href}>
-                            {subLink.label}
-                          </AnimatedLink>
-                        ))}
-                      </div>
-                    )}
-                  </>
+                  <button
+                    onClick={() => toggleSubMenu(link.label)}
+                    className="w-full text-left py-2 text-white hover:underline"
+                  >
+                    {link.label}
+                  </button>
                 ) : (
                   <AnimatedLink href={link.href}>{link.label}</AnimatedLink>
                 )}
+                {activeMenu === link.label && link.subLinks && (
+                  <div className="mt-2 ml-4 bg-green-700 rounded-md p-2">
+                    {link.subLinks.map(subLink => (
+                      <AnimatedLink key={subLink.href} href={subLink.href}>
+                        {subLink.label}
+                      </AnimatedLink>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
-
             {/* Social Links */}
             <div className="flex items-center gap-4 mt-6 border-t border-green-600 pt-4">
               <motion.a
