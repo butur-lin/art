@@ -4,17 +4,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-   --font-ermilov: 'Ermilov', sans-serif;
+   --font-ermilov: 'Kyiv-Type', sans-serif;
 }
 @font-face {
-  font-family: 'Ermilov';
-  src: url('/fonts/Ermilov.otf') format('opentype');
+  font-family: 'Kyiv-Type';
+  src: url('/fonts/Kyiv-Type-sans.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-}
-
-:root {
-  --font-ermilov: 'Ermilov', sans-serif;
 }
 
 @theme inline {
@@ -40,7 +36,7 @@ body {
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.9), 0 0 9px rgba(0, 0, 0, 0.7);
 }
 h1, h2, h3, h4 {
-  font-family: 'Ermilov', sans-serif;
+  font-family: 'Kyiv-Type', sans-serif;
 }
 
 
