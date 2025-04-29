@@ -4,6 +4,16 @@
   --background: #ffffff;
   --foreground: #171717;
 }
+@font-face {
+  font-family: 'Ermilov';
+  src: url('/fonts/Ermilov.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --font-ermilov: 'Ermilov', sans-serif;
+}
 
 @theme inline {
   --color-background: var(--background);
